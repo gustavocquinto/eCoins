@@ -17,4 +17,4 @@ Em nosso segundo projeto decidimos desenvolver um e-commerce destinado a venda d
 
 
 ## Acesso ao site
-[E-Coins](www.xxx.com.br)
+[E-Coins](https://gustavocquinto.github.io/eCoins/Login/menu.html)
