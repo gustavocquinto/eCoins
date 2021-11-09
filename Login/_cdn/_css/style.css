@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap');
+
+* {
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    box-sizing: border-box;
+    border:0 none;
+    text-decoration: none;
+}
+
+:root{
+    --cor-principal: #D46907;
+}
+
+.back-link{
+    font-size: 1.6em;
+    color: white;
+}
+
+/*PÁGINA DE LOGIN*/
+
+.login-body {
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../_img/login-background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+}
+
+.login-body h1 {
+    color: white;
+    font-size: 4em;
+    padding-top: 1.1em;
+    text-align: center;
+}
+
+.login-body p {
+    color: white;
+    font-size: 2.3em;
+    padding-top: 1.1em;
+    text-align: center;
+    
+}
+
+a {
+    color: white;
+}
+
+a:hover{
+    color: var(--cor-principal);
+}
+
+fieldset{
+    width:300px;
+    height:250px;
+    margin: 0 auto;
+}
+
+.login-box input {
+    width: 23em;
+    height: 58px;
+    margin: 10px;
+    font-size: 1.5em;
+}
+
+.login-box input:focus{
+    border: 2px var(--cor-principal);
+}
+
+
+.login-box label{
+    color: white;
+    font-size: 1.5em;
+    text-align: start;
+    padding: 0.5em;
+}
+
+.login-input {
+    width: 198px!important;
+    height: 61px;
+    background: var(--cor-principal);
+    border-radius: 5px;
+    color: white;
+    font-size: 30px;
+    
+}
+
+.login-input:hover{
+    background: #814b19;
+    cursor: pointer;  
+}
+
+/*FIM DA PÁGINA DE LOGIN*/
+
+
+@media (max-width: 1440px){
+    .login-box input {
+        width: 300px;
+    }
+}
+
+@media (max-width: 1366px){
+    .login-body h1{
+        font-size: 3.2em;
+    }
+    .login-body p{
+        font-size: 2em;
+    }
+    .login-box input{
+        width: 450px;
+    }
+}
+
+@media (max-width: 640px){
+    .login-body h1{
+        font-size: 2.5em;
+    }
+
+    .login-body p{
+        font-size: 1em;
+    }
+
+    .login-box input{
+        width: 250px;
+        height: 45px;
+    }
+    .login-box label{
+        font-size: 1.2em;
+    }
+}
+
+
+
