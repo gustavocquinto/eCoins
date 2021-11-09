@@ -1,37 +1,20 @@
-## Welcome to GitHub Pages
+# E-Coins
 
-You can use the [editor on GitHub](https://github.com/gustavocquinto/eCoins/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+E-coins é uma plataforma online de venda créditos para os melhores games do mercado.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Desenvolvedores
 
-### Markdown
+[Gustavo](https://github.com/gustavocquinto) //
+[Leonardo](https://github.com/BearSharkN) //
+[Matheus](https://github.com/herkross)
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
 
-# Header 1
-## Header 2
-### Header 3
+## Resumo
 
-- Bulleted
-- List
+Em nosso segundo projeto decidimos desenvolver um e-commerce destinado a venda de moedas em jogos online. Estas moedas online servem para a aquisição de algum item ou algum conteúdo do jogo que por vezes é dificil de conseguir, ou apenas para   mudar visual o de seu personagem. Após uma longa pesquisa, decidimos abordar este assunto por ser um mercado que cresce cada vez mais atualmente e é compatível com a proposta do nosso trabalho.  O objetivo do nosso website é  promover aos nossos usuários uma experiência segura, rápida e simples de se comprar pontos online.
 
-1. Numbered
-2. List
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/gustavocquinto/eCoins/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Acesso ao site
+[E-Coins](https://gustavocquinto.github.io/eCoins/Login/menu.html)
