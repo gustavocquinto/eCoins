@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="produtos.css">
+    <title>Produtos</title>
+</head>
+<body>
+    <form id="form" method="post" action="Produtos.php" enctype="multipart/form-data">
+        <label for="name"> Nome do produto </label>
+        <input type="text" name="name">
+        <label for="value"> Valor </label>
+        <input type="number" name="value" step="0.01">
+        <label for="quant"> Quantidade </label>
+        <input type="number" name="quant">
+        <label for="file"> Imagem do produto </label>
+        <input type="file" name="file">
+        <br>
+        <input type="submit" value="Enviar">
+    </form>
+    <br>
+    <a href="Produtos.php"> Listar Produtos </a>
+    
+</body>
+</html>
+
+<!--
+    NOME DO PRODUTO
+    VALOR
+    QUANTIDADE
+    IMAGEM
+-->
