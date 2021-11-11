@@ -13,16 +13,22 @@ $consulta = $bd -> prepare('SELECT
                             WHERE
                             email = :email');
 
-$consulta -> execute([':email' => $_POST['email']]);
-$retornoConsulta = $consulta -> fetch(PDO::FETCH_ASSOC);
+if($_POST){
+    $consulta -> execute([':email' => $_POST['email']]);
+    $retornoConsulta = $consulta -> fetch(PDO::FETCH_ASSOC);
 
-
-if($retornoConsulta && $_POST['email'] == $retornoConsulta['email'] && password_verify($_POST['password'], $retornoConsulta['senha'])){
-    $_SESSION['usuario'] = $retornoConsulta['nome'];
-    echo'<script> alert("Usuário autenticado") </script>';
-    include('menu.html');
+        if($retornoConsulta && $_POST['email'] == $retornoConsulta['email'] && password_verify($_POST['password'], $retornoConsulta['senha'])){
+        $_SESSION['usuario'] = $retornoConsulta['nome'];
+        echo'<script> alert("Usuário autenticado") </script>';
+        include('menu.html');
     
+        }
+        else{
+        echo'<script> alert("Dados incorretos") </script>';
+        include ('login.html');
+        }
 }
+
 else{
     echo'<script> alert("Dados incorretos") </script>';
     include ('login.html');
