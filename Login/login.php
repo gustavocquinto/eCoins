@@ -18,14 +18,14 @@ if($_POST){
     $retornoConsulta = $consulta -> fetch(PDO::FETCH_ASSOC);
 
         if($retornoConsulta && $_POST['email'] == $retornoConsulta['email'] && password_verify($_POST['password'], $retornoConsulta['senha'])){
-        $_SESSION['usuario'] = $retornoConsulta['nome'];
-        echo'<script> alert("Usuário autenticado") </script>';
-        include('menu.html');
-    
+            $_SESSION['usuario'] = $retornoConsulta['nome'];
+            echo'<script> alert("Usuário autenticado") </script>';
+            echo"<meta http-equiv='refresh' content='0;url=menu.html'>";
+        
         }
         else{
-        echo'<script> alert("Dados incorretos") </script>';
-        include ('login.html');
+            echo'<script> alert("Dados incorretos") </script>';
+            include ('login.html');
         }
 }
 

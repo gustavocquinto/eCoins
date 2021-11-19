@@ -80,3 +80,6 @@ class Product {
 
 
 }
+
+//$id = preg_replace ('//D/', '', $id);
+//Confirma se é digito, 1 virgula ve se é digito, e a na virgula 2, se nao for, ele aplica VAZIO a $id.
