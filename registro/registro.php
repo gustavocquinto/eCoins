@@ -44,8 +44,7 @@ $valores[':cpf'] = $_POST['cpf'];
 
 if($preparando -> execute($valores)){
     echo'<script> alert("Dados coletados com sucesso.") </script>';
-    include ('../Menu/menu.html');
-    include ('../Menu/menu.css');
+    echo"<meta http-equiv='refresh' content='0;url=../Login/login.html'>";
 }
 else{
     echo'<script> alert("Algo deu errado") </script>';
