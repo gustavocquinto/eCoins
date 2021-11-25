@@ -1,6 +1,6 @@
 .card {
 width: 432px;
-height: 738px;;
+height: 450px;
 background: #212124;
 display: flex;
 flex-direction: column;
@@ -78,4 +78,9 @@ background-color: #212124;
     margin: 0;
     border: 0;
     box-sizing:border-box;
+}
+
+.input {
+    width: 200px;
+    text-align: center;
 }
