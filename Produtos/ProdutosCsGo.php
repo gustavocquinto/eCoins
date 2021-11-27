@@ -10,17 +10,20 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="ProdutosCsGo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="ProdutosCsGo.css">
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
-    <title>Produtos CsGo</title>
+    <title>Produtos</title>
 
 </head>
 
 <body>
     <div>
         <image src="ProdutosCsGo/csgo.png" />
+        <form method="post" action="ProdutosCsGo.php">
+            <button class="botao" type="submit" name="add" >Cadastrar novo produto </button>
+        </form>
     </div>
     <div class="products-list">
         <?php
@@ -28,6 +31,11 @@
             include('Produtos.class.php');
 
             $obj = new Product();
+
+            if(isset($_POST['add'])){
+                $obj->addProductPage();
+                exit();
+            }
 
             if (isset($_POST['deletar'])){
                 $obj-> delProduct($bd, $_POST['deletar']); 
@@ -92,8 +100,6 @@
             </div>
         </div>
     </div>
-
-
 </body>
 
 </html>

@@ -28,8 +28,10 @@
             if(isset($_POST['id'])){
                 $obj-> attProduct($bd, $_POST['id'], $_POST['nome'], $_POST['valor'], $_POST['quant']);
                 $obj->attPage();
-                unset($_POST);
+                unset($_POST);   
             }
+
+
         ?>
     </div>
     </body>

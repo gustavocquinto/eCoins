@@ -2,7 +2,20 @@
 
 
 class Product {
-
+    function addProductPage() {
+        echo"<form class='card' method='post' action='CadProdutos.php' enctype='multipart/form-data' >
+                <label for='name'> Nome do produto </label>
+                <input type='text' name='name'>
+                <label for='value'> Valor </label>
+                <input type='number' name='value' step='0.01'>
+                <label for='quant'> Quantidade </label>
+                <input type='number' name='quant'>
+                <label for='file'> Imagem do produto (<span style='color: red'>Somente PNG </span>) </label>
+                <input type='file' name='file'>
+                <br>
+                <input class='botao'type='submit' value='Enviar'>  
+            </form>";
+    }
     function addProduct($bd, $name, $value, $quant, $file){
         $add = $bd -> prepare("INSERT INTO produtos (nomeproduto, valor, quantidade, imagem)
                                VALUES (:nomeproduto, :valor, :quantidade, :imagem)");
@@ -38,13 +51,13 @@ class Product {
                 echo"
                         <div class='card'>
                             <form class='' method='post' action='ProdutosCsGo.php'>
-                                <h3> {$registro['nomeproduto']} </h3>
-                                <img width='280px' height= '200px' src='{$registro['imagem']}'>
+                                <h3 style='text-align: center;'> {$registro['nomeproduto']} </h3>
+                                <img id='imgg' width='280px' height= '200px' src='{$registro['imagem']}'>
                                 <h3> Estoque: {$registro['quantidade']}</h3>
                                 <h3> Valor: R$ {$registro['valor']} </h3>
-                                <button type='submit' name='editar' value='{$registro['id']}'> Editar </button>
+                                <button class='botao' type='submit' name='editar' value='{$registro['id']}'> Editar </button>
                                 <br>
-                                <button type='submit' name='deletar' value='{$registro['imagem']}'> Deletar </button>
+                                <button class='botao'type='submit' name='deletar' value='{$registro['imagem']}'> Deletar </button>
                             </form>
                     </div>";
         }
@@ -57,7 +70,7 @@ class Product {
         $sql -> execute();
         $consulta = $sql -> fetch(PDO::FETCH_ASSOC);
         echo"<form class='card' method='post' action='ProdutosCsgo.php'>
-                <h2> {$consulta['nomeproduto']} -- ID: {$id} </h2>
+                <h2> {$consulta['nomeproduto']} <span style='color: green;'>{$id}</span>  </h2>
                 <img width='280px' height= '200px' src='{$consulta['imagem']}'>
                 <br>
                 <label for='nome'> Nome </label>
