@@ -2,7 +2,20 @@
 
 
 class Product {
-
+    function addProductPage() {
+        echo"<form class='card' method='post' action='CadProdutos.php' enctype='multipart/form-data' >
+                <label for='name'> Nome do produto </label>
+                <input type='text' name='name'>
+                <label for='value'> Valor </label>
+                <input type='number' name='value' step='0.01'>
+                <label for='quant'> Quantidade </label>
+                <input type='number' name='quant'>
+                <label for='file'> Imagem do produto (<span style='color: red'>Somente PNG </span>) </label>
+                <input type='file' name='file'>
+                <br>
+                <input class='botao'type='submit' value='Enviar'>  
+            </form>";
+    }
     function addProduct($bd, $name, $value, $quant, $file){
         $add = $bd -> prepare("INSERT INTO produtos (nomeproduto, valor, quantidade, imagem)
                                VALUES (:nomeproduto, :valor, :quantidade, :imagem)");
@@ -35,19 +48,17 @@ class Product {
                 FROM produtos';
         $query = $bd -> query($sql);
         foreach($query as $registro){
-                echo"<div id='testando2'>
-                        <div id='testando3'>
-                            <form class='form' id='form' method='post' action='Produtos.php'>
-                                <h3> {$registro['nomeproduto']} </h3>
-                                <img src='{$registro['imagem']}'>
+                echo"
+                        <div class='card'>
+                            <form class='' method='post' action='ProdutosCsGo.php'>
+                                <h3 style='text-align: center;'> {$registro['nomeproduto']} </h3>
+                                <img id='imgg' width='280px' height= '200px' src='{$registro['imagem']}'>
                                 <h3> Estoque: {$registro['quantidade']}</h3>
                                 <h3> Valor: R$ {$registro['valor']} </h3>
-                                <button type='submit' name='editar' value='{$registro['id']}'> Editar </button>
+                                <button class='botao' type='submit' name='editar' value='{$registro['id']}'> Editar </button>
                                 <br>
-                                <button type='submit' name='deletar' value='{$registro['imagem']}'> Deletar </button>
-                                <hr></hr>
+                                <button class='botao'type='submit' name='deletar' value='{$registro['imagem']}'> Deletar </button>
                             </form>
-                        </div>
                     </div>";
         }
         
@@ -58,16 +69,16 @@ class Product {
                 WHERE id = {$id}");
         $sql -> execute();
         $consulta = $sql -> fetch(PDO::FETCH_ASSOC);
-        echo"<form class='form' method='post' action='Produtos.php'>
-                <h2> {$consulta['nomeproduto']} -- ID: {$id} </h2>
-                <img src='{$consulta['imagem']}'>
+        echo"<form class='card' method='post' action='ProdutosCsgo.php'>
+                <h2> {$consulta['nomeproduto']} <span style='color: green;'>{$id}</span>  </h2>
+                <img width='280px' height= '200px' src='{$consulta['imagem']}'>
                 <br>
                 <label for='nome'> Nome </label>
-                <input type='text' name='nome' value='{$consulta['nomeproduto']}'>
+                <input class='input' type='text' name='nome' value='{$consulta['nomeproduto']}'>
                 <label for='valor'> Valor </label>
-                <input type='number' name='valor' value='{$consulta['valor']}'>
+                <input class='input' type='number' name='valor' value='{$consulta['valor']}'>
                 <label for='quant'> Quantidade </label>
-                <input type='number' name='quant' value='{$consulta['quantidade']}'>
+                <input class='input' type='number' name='quant' value='{$consulta['quantidade']}'>
                 <br>
                 <button type='submit' name='id' value='{$id}'> Aplicar alterações </button>
             </form>";
