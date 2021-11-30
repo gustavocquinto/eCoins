@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="ProdutosCsGo.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'> </script>
+    <script src='teste.js'></script>
     <link href="https://fonts.googleapis.com/css2?family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
     <title>Produtos</title>
 
@@ -29,11 +32,35 @@
         <?php
             include('../Banco/conectaBD.php');
             include('Produtos.class.php');
+            session_start();
 
             $obj = new Product();
 
+            if(isset($_POST['Enviar'])){
+                if (empty($_POST['name']) || empty($_POST['value']) || empty($_POST['quant']) || empty($_FILES['file'])){
+                    echo "<script> confirm('Dados preenchidos incorretamente')</script>";
+                    echo"<meta http-equiv='refresh' content='0;url=ProdutosCsgo.php'>";
+                    exit();
+                }
+
+                $filesTMP = $_FILES['file']['tmp_name'];
+                $directory = 'Produtosimagem/';
+                $newname = uniqid().'.png';
+                $true = 'true';
+
+                if(mime_content_type($filesTMP) == 'image/png'){
+
+                    move_uploaded_file($filesTMP, $directory.$newname);
+                    $obj->addProduct($bd, $_POST['name'], $_POST['value'], $_POST['quant'], $directory.$newname);
+                    echo "<script> swal('produto adicionado') </script>"; ##solicitar ajuda com sleep.
+                    echo"<meta http-equiv='refresh' content='0;url=ProdutosCsGo.php'>";
+                    unset($_POST);
+                        
+
+                }
+            }
             if(isset($_POST['add'])){
-                $obj->addProductPage();
+                $obj->addProductPage(null);
                 exit();
             }
 

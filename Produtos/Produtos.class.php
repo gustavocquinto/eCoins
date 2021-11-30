@@ -2,8 +2,8 @@
 
 
 class Product {
-    function addProductPage() {
-        echo"<form class='card' method='post' action='CadProdutos.php' enctype='multipart/form-data' >
+    function addProductPage($feedback) {
+        echo"<form class='card' method='post' action='ProdutosCsGo.php' enctype='multipart/form-data' >
                 <label for='name'> Nome do produto </label>
                 <input type='text' name='name'>
                 <label for='value'> Valor </label>
@@ -12,8 +12,17 @@ class Product {
                 <input type='number' name='quant'>
                 <label for='file'> Imagem do produto (<span style='color: red'>Somente PNG </span>) </label>
                 <input type='file' name='file'>
-                <br>
-                <input class='botao'type='submit' value='Enviar'>  
+                <br>";
+            if($feedback == true){
+                echo"<h4 style='color: green;'>Produto adicionado com sucesso </h4>";
+            }
+
+            if($feedback != null){
+                echo"<h4 style='color: red;'>Algo deu errado, Produto Não adicionado </h4>";
+            } 
+            
+            
+        echo"<button class='botao'type='submit' name='Enviar' value='Enviar'> Enviar </button> 
             </form>";
     }
     function addProduct($bd, $name, $value, $quant, $file){
