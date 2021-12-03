@@ -24,15 +24,22 @@
 <body>
     <div>
         <image src="ProdutosCsGo/csgo.png" />
-        <form method="post" action="ProdutosCsGo.php">
-            <button class="botao" type="submit" name="add" >Cadastrar novo produto </button>
-        </form>
+        <?php
+            include('../Sessao/confirmasessao.php');
+            if(isset($_SESSION['perm'])){
+                if($_SESSION['perm'] == true){
+                    echo"
+                    <form method='post' action='ProdutosCsGo.php'>
+                        <button class='botao' type='submit' name='add' >Cadastrar novo produto </button>
+                    </form>";
+                }
+            };
+        ?>
     </div>
     <div class="products-list">
         <?php
             include('../Banco/conectaBD.php');
             include('Produtos.class.php');
-            session_start();
 
             $obj = new Product();
 
@@ -52,11 +59,9 @@
 
                     move_uploaded_file($filesTMP, $directory.$newname);
                     $obj->addProduct($bd, $_POST['name'], $_POST['value'], $_POST['quant'], $directory.$newname);
-                    echo "<script> swal('produto adicionado') </script>"; ##solicitar ajuda com sleep.
+                    echo "<script> confirm('Produto adicionado com sucesso. Redirecionando...')</script>";
                     echo"<meta http-equiv='refresh' content='0;url=ProdutosCsGo.php'>";
                     unset($_POST);
-                        
-
                 }
             }
             if(isset($_POST['add'])){
@@ -71,7 +76,7 @@
                 $obj -> queryProduct($bd, $_POST['editar']);
             }
             else{
-                $obj-> showProducts($bd);
+                $obj-> showProducts($bd, $_SESSION['perm']);
             }
             if(isset($_POST['id'])){
                 $obj-> attProduct($bd, $_POST['id'], $_POST['nome'], $_POST['valor'], $_POST['quant']);
@@ -85,7 +90,7 @@
             <div class="footer-content-title">
                 NAVEGUE PELO SITE
             </div>
-            <div class="footer-content-item">
+            <div style="cursor: pointer" onclick="location.href='../Login/menu.php'" class="footer-content-item">
                 PÁGINA INICIAL
             </div >
             <div class="footer-content-item">

@@ -1,7 +1,7 @@
 <?php 
 
 
-if (empty($_POST['nome']) || empty($_POST['sobrenome']) || empty($_POST['email']) || empty($_POST['cpf']) or empty($_POST['senha'])){
+if (empty($_POST['nome']) || empty($_POST['sobrenome']) || empty($_POST['email']) || empty($_POST['telefone']) or empty($_POST['senha'])){
     echo'<script> alert("Dados preenchidos incorretamente.") </script>';
     include('registro.html');
     exit();
@@ -11,7 +11,7 @@ require_once('C:\Users\Gustavo\Xampps\htdocs\eCoins\Banco\conectaBD.php');
 
 
 $consulta = $bd -> prepare('SELECT 
-                            cpf, email
+                            telefone, email
                             FROM 
                             usuarios
                             WHERE
@@ -31,14 +31,14 @@ if ($registro && $_POST['email'] == $registro['email']){
 
 
 $preparando = $bd -> prepare(
-    'INSERT usuarios (nome, sobrenome, email, senha, cpf)
-     VALUES (:nome, :sobrenome, :email, :senha, :cpf)');
+    'INSERT usuarios (nome, sobrenome, email, senha, telefone)
+     VALUES (:nome, :sobrenome, :email, :senha, :telefone)');
 
 $valores[':nome'] = $_POST['nome'];
 $valores[':sobrenome'] = $_POST['sobrenome'];
 $valores[':email'] = $_POST['email'];
 $valores[':senha'] = password_hash($_POST['senha'], PASSWORD_DEFAULT);
-$valores[':cpf'] = $_POST['cpf'];
+$valores[':telefone'] = $_POST['telefone'];
 
 //password_hash($_POST['senha'], PASSWORD_DEFAULT);
 

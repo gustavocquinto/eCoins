@@ -71,11 +71,24 @@
     max-width: 100%;
 }
 
-#base h1 {
+#conta {
     position: absolute;
     right: 0px;
     margin: 20px;
     text-shadow: 2px 1px 1px black;
+    text-decoration: none;
+    font-size: 25px;
+    
+}
+.sair {
+    position: absolute;
+    top: 25px;
+    right: 0px;
+    margin: 20px;
+    text-shadow: 2px 1px 1px black;
+    text-decoration: none;
+    font-style: bold;
+    font-size: 20px;
     
 }
 

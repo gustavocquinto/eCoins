@@ -13,13 +13,6 @@ class Product {
                 <label for='file'> Imagem do produto (<span style='color: red'>Somente PNG </span>) </label>
                 <input type='file' name='file'>
                 <br>";
-            if($feedback == true){
-                echo"<h4 style='color: green;'>Produto adicionado com sucesso </h4>";
-            }
-
-            if($feedback != null){
-                echo"<h4 style='color: red;'>Algo deu errado, Produto Não adicionado </h4>";
-            } 
             
             
         echo"<button class='botao'type='submit' name='Enviar' value='Enviar'> Enviar </button> 
@@ -52,23 +45,37 @@ class Product {
         unlink($produto);
         $this->attPage();
     }
-    function showProducts($bd){
+    function showProducts($bd, $perm){
         $sql = 'SELECT id, nomeproduto, valor, quantidade, imagem
                 FROM produtos';
         $query = $bd -> query($sql);
         foreach($query as $registro){
+            if($perm == 'admin'){    
                 echo"
-                        <div class='card'>
-                            <form class='' method='post' action='ProdutosCsGo.php'>
-                                <h3 style='text-align: center;'> {$registro['nomeproduto']} </h3>
-                                <img id='imgg' width='280px' height= '200px' src='{$registro['imagem']}'>
-                                <h3> Estoque: {$registro['quantidade']}</h3>
-                                <h3> Valor: R$ {$registro['valor']} </h3>
-                                <button class='botao' type='submit' name='editar' value='{$registro['id']}'> Editar </button>
-                                <br>
-                                <button class='botao'type='submit' name='deletar' value='{$registro['imagem']}'> Deletar </button>
-                            </form>
-                    </div>";
+                            <div class='card'>
+                                <form class='' method='post' action='ProdutosCsGo.php'>
+                                    <h3 style='text-align: center;'> {$registro['nomeproduto']} </h3>
+                                    <img id='imgg' width='280px' height= '200px' src='{$registro['imagem']}'>
+                                    <h3> Estoque: {$registro['quantidade']}</h3>
+                                    <h3> Valor: R$ {$registro['valor']} </h3>
+                                    <button class='botao' type='submit' name='editar' value='{$registro['id']}'> Editar </button>
+                                    <br>
+                                    <button class='botao'type='submit' name='deletar' value='{$registro['imagem']}'> Deletar </button>
+                                </form>
+                        </div>";
+                }
+            else{
+                echo"
+                            <div class='card'>
+                                <form class='' method='post' action='ProdutosCsGo.php'>
+                                    <h3 style='text-align: center;'> {$registro['nomeproduto']} </h3>
+                                    <img id='imgg' width='280px' height= '200px' src='{$registro['imagem']}'>
+                                    <h3> Valor: R$ {$registro['valor']} </h3>
+                                    <br>
+                                    <button class='botaocomprar'type='submit' name='Comprar' value='{$registro['imagem']}'> Comprar </button>
+                                </form>
+                        </div>";
+            }
         }
         
     }
@@ -97,6 +104,17 @@ class Product {
         echo"<meta HTTP-EQUIV='refresh' CONTENT='0'>";
     }
 
+    function WaitForSec($sec){
+        $i = 1;
+        $last_time = $_SERVER['REQUEST_TIME'];
+        while($i > 0){
+            $total = $_SERVER['REQUEST_TIME'] - $last_time;
+            if($total >= 2){
+                return 1;
+                $i = -1;
+            }
+        }
+    }
 
 
 }
