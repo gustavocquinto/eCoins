@@ -58,9 +58,9 @@ class Product {
                                     <img id='imgg' width='280px' height= '200px' src='{$registro['imagem']}'>
                                     <h3> Estoque: {$registro['quantidade']}</h3>
                                     <h3> Valor: R$ {$registro['valor']} </h3>
-                                    <button class='botao' type='submit' name='editar' value='{$registro['id']}'> Editar </button>
+                                    <button class='botaoadmin' type='submit' name='editar' value='{$registro['id']}'> Editar </button>
                                     <br>
-                                    <button class='botao'type='submit' name='deletar' value='{$registro['imagem']}'> Deletar </button>
+                                    <button class='botaoadmin'type='submit' name='deletar' value='{$registro['imagem']}'> Deletar </button>
                                 </form>
                         </div>";
                 }
@@ -102,18 +102,6 @@ class Product {
     }
     function attPage() {
         echo"<meta HTTP-EQUIV='refresh' CONTENT='0'>";
-    }
-
-    function WaitForSec($sec){
-        $i = 1;
-        $last_time = $_SERVER['REQUEST_TIME'];
-        while($i > 0){
-            $total = $_SERVER['REQUEST_TIME'] - $last_time;
-            if($total >= 2){
-                return 1;
-                $i = -1;
-            }
-        }
     }
 
 

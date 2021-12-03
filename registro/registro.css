@@ -67,5 +67,12 @@ body {
     color: black;
 }
 
+#linka {
+    text-decoration: none;
+}
+
+#linka:hover {
+    color:#D46907;
+}
 
 

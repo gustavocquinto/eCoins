@@ -17,7 +17,7 @@
         <?php
             include('../Sessao/confirmasessao.php');
                 if(isset($_SESSION['usuario'])){
-                echo "<a class='sair' href='../Sessao/deletasessao.php'> SAIR </a>";
+                    echo "<a class='sair' href='../Sessao/deletasessao.php'> SAIR </a>";
                 }
             ?>
         <a href="../Produtos/ProdutosCsGo.php" id="games"> OUTROS JOGOS </a>
@@ -44,7 +44,7 @@
             </div>
         </div>
         
-        <img class="background" src="https://dmarket.com/blog/best-csgo-wallpapers/Nice-CS-GO-wallpaper-HD_hu9daf9fbbe6aa6f61f011d2b89d3e158b_1307082_1920x1080_resize_q75_lanczos.jpg">
+        <img class="background" src="../Produtos/ProdutosCsGo/csgoo.jpg">
     </main>
     <section id="fortnite">
         <div id="container-esquerda">
